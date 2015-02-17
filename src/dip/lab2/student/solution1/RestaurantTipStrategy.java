@@ -21,6 +21,22 @@ public class RestaurantTipStrategy implements TipStrategy {
         setPercentTip(percentTip);
     }
     
+    public RestaurantTipStrategy(double total, ServiceQuality quality) {
+        setTotal(total);
+        switch (quality) {
+            case HORRIBLE:
+                percentTip = 0.00;
+            case POOR:
+                percentTip = 0.10;
+            case STANDARD:
+                percentTip = 0.15;
+            case GOOD:
+                percentTip = 0.20;
+            case EXCELLENT:
+                percentTip = 0.25;
+        }
+    }
+    
     public double getTotal() {
         return total;
     }
